@@ -6,20 +6,16 @@ Created on Fri May 21 12:48:30 2021
 """
 
 import pickle
-from flask import Flask, request, jsonify, render_template
+import sklearn
+from flask import Flask, request
 import numpy as np
 
 app = Flask(__name__)
 strength = ["weak", "medium", "strong"]
-
+print(sklearn.__version__)
 appfile = open("PassCheck_XGBoost.pkl","rb")
 model = pickle.load(appfile)
 
-def word_to_chars(word):
-    characters = []
-    for char in word:
-        characters.append(char)
-    return characters
 
 appfile1 = open("vectorizer.pkl","rb")
 vectorizer = pickle.load(appfile1)
@@ -38,8 +34,13 @@ def checkPass():
 
 
 if __name__=='__main__':
+    def word_to_chars(word):
+        characters = []
+        for char in word:
+            characters.append(char)
+        return characters
     app.run()
 
 
-
+# xgboost-1.4.2
 
