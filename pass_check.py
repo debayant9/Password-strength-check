@@ -16,10 +16,6 @@ print(sklearn.__version__)
 appfile = open("PassCheck_XGBoost.pkl","rb")
 model = pickle.load(appfile)
 
-
-appfile1 = open("vectorizer.pkl","rb")
-vectorizer = pickle.load(appfile1)
-
 @app.route('/', methods=['GET'])
 def start():
     return "Check password"
@@ -39,6 +35,8 @@ if __name__=='__main__':
         for char in word:
             characters.append(char)
         return characters
+    appfile1 = open("vectorizer.pkl","rb")
+    vectorizer = pickle.load(appfile1)
     app.run()
 
 
