@@ -24,6 +24,7 @@ def start():
 
 @app1.route('/predict', methods=['GET'])
 def checkPass():
+    from __main__ import word_to_chars
     appfile1 = open("vectorizer.pkl","rb")
     vectorizer = pickle.load(appfile1)
     password = request.args.get("pass")
