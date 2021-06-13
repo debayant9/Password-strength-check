@@ -1,1 +1,1 @@
-web: gunicorn pass_check:app
+web: gunicorn pass_check:app1
