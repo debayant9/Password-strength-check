@@ -8,7 +8,11 @@ Created on Fri May 21 12:48:30 2021
 import pickle
 from flask import Flask, request
 import numpy as np
-
+ def word_to_chars(word):
+        characters = []
+        for char in word:
+            characters.append(char)
+        return characters
 
 app1 = Flask(__name__)
 strength = ["weak", "medium", "strong"]
@@ -35,11 +39,6 @@ def checkPass():
 
 
 if __name__=='__main__':
-    def word_to_chars(word):
-        characters = []
-        for char in word:
-            characters.append(char)
-        return characters
     app1.run()
 
 
