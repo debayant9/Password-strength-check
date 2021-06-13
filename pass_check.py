@@ -8,11 +8,6 @@ Created on Fri May 21 12:48:30 2021
 import pickle
 from flask import Flask, request
 import numpy as np
-def word_to_chars(word):
-       characters = []
-       for char in word:
-           characters.append(char)
-       return characters
 
 app1 = Flask(__name__)
 strength = ["weak", "medium", "strong"]
@@ -28,6 +23,8 @@ def start():
 
 @app1.route('/predict', methods=['GET'])
 def checkPass():
+    appfile34 = open("wordsToChars.pkl","rb")
+    word_to_chars = pickle.load(appfile34)
     appfile1 = open("vectorizer.pkl","rb")
     vectorizer = pickle.load(appfile1)
     password = request.args.get("pass")
