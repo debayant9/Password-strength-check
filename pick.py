@@ -5,6 +5,8 @@ Created on Mon Jun 14 00:38:14 2021
 @author: Debayan
 """
 import pickle
+from sklearn.feature_extraction.text import TfidfVectorizer 
+
 
 class extract:
     def word_to_chars(word):
@@ -14,8 +16,7 @@ class extract:
         return characters 
     
     def tfidf_vectorizer(self):
-        appfile1 = open("vectorizer.pkl","rb")
-        vectorizer = pickle.load(appfile1)
+        vectorizer = TfidfVectorizer(tokenizer=self.word_to_chars)
         return vectorizer
     
     def xgboost_model(self):
