@@ -10,6 +10,7 @@ from flask import Flask, request
 import numpy as np
 from pick import extract
 
+
 app1 = Flask(__name__)
 strength = ["weak", "medium", "strong"]
 
@@ -21,15 +22,13 @@ def start():
 def checkPass():
      ext = extract()
      model = ext.xgboost_model()
-     vectorizer = ext.tfidf_vectorizer()
+     vectorizer = tfidf_vectorizer()
      password = request.args.get("pass")
      X_predict=np.array([password])
      X_predict=vectorizer.transform(X_predict)
      value = model.predict(X_predict)[0]
      return "The strength of password is {}".format(strength[value])
    
-
-
 if __name__=='__main__':
     app1.run()
 
