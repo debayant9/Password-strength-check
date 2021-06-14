@@ -22,7 +22,7 @@ def start():
 def checkPass():
      ext = extract()
      model = ext.xgboost_model()
-     vectorizer = tfidf_vectorizer()
+     vectorizer = ext.tfidf_vectorizer()
      password = request.args.get("pass")
      X_predict=np.array([password])
      X_predict=vectorizer.transform(X_predict)
