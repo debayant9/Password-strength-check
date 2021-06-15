@@ -14,15 +14,16 @@ from pick import extract
 app1 = Flask(__name__)
 strength = ["weak", "medium", "strong"]
 
+ext = extract()
+model = ext.xgboost_model()
+vectorizer = ext.tfidf_vectorizer()
+
 @app1.route('/', methods=['GET'])
 def start():
     return "Check password"
 
 @app1.route('/predict', methods=['GET'])
 def checkPass():
-     ext = extract()
-     model = ext.xgboost_model()
-     vectorizer = ext.tfidf_vectorizer()
      password = request.args.get("pass")
      X_predict=np.array([password])
      X_predict=vectorizer.transform(X_predict)
